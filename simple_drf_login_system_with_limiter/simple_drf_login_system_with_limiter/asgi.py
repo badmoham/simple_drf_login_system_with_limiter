@@ -1,5 +1,5 @@
 """
-ASGI config for sampelino project.
+ASGI config for simple_drf_login_system_with_limiter project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sampelino.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'simple_drf_login_system_with_limiter.settings')
 
 application = get_asgi_application()
