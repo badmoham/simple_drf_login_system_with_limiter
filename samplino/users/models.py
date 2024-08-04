@@ -133,7 +133,7 @@ class BannedFromSignIn(models.Model):
     @staticmethod
     def is_banned(phone_number: str, user_ip: str):
         """ will check if user is or should be banned from singing in """
-        is_banned = UserSignInTry.objects.filter(Q(phone_number=phone_number) |
+        is_banned = BannedFromSignIn.objects.filter(Q(phone_number=phone_number) |
                                                  Q(user_ip=user_ip), banned_until__gt=timezone.now()).exists()
         if is_banned is True:
             return True

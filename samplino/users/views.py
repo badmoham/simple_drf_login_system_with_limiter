@@ -88,7 +88,7 @@ class SignInView(TokenObtainPairView):
 
     def post(self, request, *args, **kwargs):
         """ inherit from parent class and also add a limiter """
-        serializer = UserSignInSerializer(request.POST)
+        serializer = UserSignInSerializer(data=request.POST)
         serializer.is_valid(raise_exception=True)
         user_ip = get_user_ip(request)
         phone_number = serializer.data["phone_number"]
