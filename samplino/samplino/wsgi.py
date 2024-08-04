@@ -1,5 +1,5 @@
 """
-WSGI config for sampelino project.
+WSGI config for samplino project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sampelino.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'samplino.settings')
 
 application = get_wsgi_application()
