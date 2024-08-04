@@ -108,7 +108,7 @@ class BannedFromSignUp(models.Model):
     banned_until = models.DateTimeField(_("can not retry until"), null=True)
 
     @staticmethod
-    def is_banned(phone_number: str, user_ip: str):
+    def is_banned(phone_number: str, user_ip: str) -> bool:
         """ will check if user is or should be banned from singing up """
         is_banned = BannedFromSignUp.objects.filter(Q(phone_number=phone_number) |
                                                     Q(user_ip=user_ip), banned_until__gt=timezone.now()).exists()
@@ -131,7 +131,7 @@ class BannedFromSignIn(models.Model):
     banned_until = models.DateTimeField(_("can not retry until"), null=True)
 
     @staticmethod
-    def is_banned(phone_number: str, user_ip: str):
+    def is_banned(phone_number: str, user_ip: str) -> bool:
         """ will check if user is or should be banned from singing in """
         is_banned = BannedFromSignIn.objects.filter(Q(phone_number=phone_number) |
                                                  Q(user_ip=user_ip), banned_until__gt=timezone.now()).exists()
