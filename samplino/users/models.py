@@ -12,7 +12,8 @@ from users.validators import phone_number_regex_validator
 
 from samplino.settings import SMS_MAX_WRONG_RETRY, BAN_RETRY_DURATION
 
-__all__ = ["CustomUser", "UserPreRegister", "BannedFromSignUp", "PhoneNumberValidation", "UserSignUpTry"]
+__all__ = ["CustomUser", "UserPreRegister", "BannedFromSignUp", "PhoneNumberValidation", "UserSignUpTry",
+           "BannedFromSignIn", "UserSignInTry"]
 
 
 class CustomUser(AbstractUser):

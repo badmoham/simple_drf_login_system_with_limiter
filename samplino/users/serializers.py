@@ -3,7 +3,8 @@ from rest_framework import serializers
 from users.models import CustomUser, UserPreRegister
 
 from samplino.settings import REGISTRATION_SMS_CODE_LENGTH
-__all__ = ["UserPhoneNumberSerializer", "PhoneNumberValidationSerializer", "UserRegisterSerializer"]
+__all__ = ["UserPhoneNumberSerializer", "PhoneNumberValidationSerializer",
+           "UserRegisterSerializer", "UserSignInSerializer"]
 
 
 class UserPhoneNumberSerializer(serializers.ModelSerializer):
@@ -20,16 +21,13 @@ class PhoneNumberValidationSerializer(serializers.ModelSerializer):
         fields = ['phone_number', 'code']
 
 
-class UserSignInSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CustomUser
-        fields = ('password', "phone_number")
-        write_only_fields = fields
+class UserSignInSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(max_length=16)
+    password = serializers.CharField(max_length=128)
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
-    registration_id = serializers.CharField(required=True)
+    registration_id = serializers.CharField(required=True, write_only=True)
 
     class Meta:
         model = CustomUser

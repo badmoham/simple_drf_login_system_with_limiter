@@ -5,10 +5,10 @@ from rest_framework import status
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from users.models import CustomUser, BannedFromSignUp, PhoneNumberValidation, UserSignUpTry, BannedFromSignIn, \
-    UserSignInTry
-from users.serializers import UserPhoneNumberSerializer, PhoneNumberValidationSerializer, UserRegisterSerializer, \
-    UserSignInSerializer
+from users.models import (CustomUser, BannedFromSignUp, PhoneNumberValidation, UserSignUpTry,
+                          BannedFromSignIn, UserSignInTry)
+from users.serializers import (UserPhoneNumberSerializer, PhoneNumberValidationSerializer,
+                               UserRegisterSerializer, UserSignInSerializer)
 from users.utils import get_user_ip, send_registration_code
 __all__ = ["UserExistView", "SignInView", "SendSMSForRegistrationView", "RegistrationConfirmSMSView", "UserRegisterView"]
 
