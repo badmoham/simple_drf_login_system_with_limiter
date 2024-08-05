@@ -17,7 +17,7 @@ class PhoneNumberValidationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['phone_number']
+        fields = ['phone_number', 'code']
 
 
 class UserSignInSerializer(serializers.ModelSerializer):
@@ -33,8 +33,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'password', 'email', 'first_name', 'last_name')
-        write_only_fields = ('password', "registration_id")
+        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'registration_id')
+        write_only_fields = ('password',)
 
     def create(self, validated_data):
         user = CustomUser.objects.create(
@@ -57,7 +57,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"registration_id": "is not a valid value"})
         pre_register = pre_register.get()
         pre_register.is_registered = True
-        pre_register.seve()
+        pre_register.save()
         data["phone_number"] = pre_register.phone_number
         return data
 
